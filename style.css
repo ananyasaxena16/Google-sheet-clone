@@ -1,0 +1,29 @@
+body{
+    margin:0;
+}
+*{
+    box-sizing: border-box;
+}
+.menu-container{
+    background-color: aqua;
+    height:80px;
+}
+.formula-container{
+    height:30px;
+    background-color: aquamarine;
+}
+.sheets{
+    height:40px;
+    background-color: azure;
+    display: flex;
+}
+.grid{
+    height:calc( 100vh - ( 80px + 30px + 40px ));
+    background-color: beige;
+}
+.plus{
+    width:15px;
+    height:20px;
+    background-color:blue;
+    display: flex;
+}
