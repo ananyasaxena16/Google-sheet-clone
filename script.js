@@ -7,6 +7,16 @@ let leftBtn = document.querySelector(".left");
 let rightBtn = document.querySelector(".right");
 let centerBtn = document.querySelector(".center");
 let fontBtn = document.querySelector(".font-size");
+let boldbtn = document.querySelector(".bold");
+let italicbtn = document.querySelector(".Italic");
+let underlinebtn = document.querySelector(".underline");
+let fontfamilybtn = document.querySelector(".font-family");
+let changecoloroftextbtn = document.querySelector("#color");
+let changecolorofbgbtn = document.querySelector("#bg-color");
+/*https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color*/
+
+
+
 firstSheet.addEventListener("click", handleActiveSheet)
 addbtnContainer.addEventListener("click", function () {
     let sheetsArr = document.querySelectorAll(".sheet");
@@ -46,21 +56,21 @@ leftBtn.addEventListener("click", function () {
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "left"
+    cell.style.textAlign = "left";
 })
 rightBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "right"
+    cell.style.textAlign = "right";
 })
 centerBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "center"
+    cell.style.textAlign = "center";
 })
 
 fontBtn.addEventListener("change", function () {
@@ -72,6 +82,41 @@ fontBtn.addEventListener("change", function () {
     console.log(fontSize);
     cell.style.fontSize = fontSize+"px";
 })
+
+boldbtn.addEventListener("click",function(){
+    let address = addressBar.value;
+    let { rid, cid } = getRIdCIdfromAddress(address);
+    console.log(rid, cid);
+    let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+    cell.style.fontWeight = "bold";
+})
+
+italicbtn.addEventListener("click",function(){
+    let address = addressBar.value;
+    let { rid, cid } = getRIdCIdfromAddress(address);
+    console.log(rid, cid);
+    let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+    cell.style.fontStyle = "italic";
+})
+
+underlinebtn.addEventListener("click",function(){
+    let address = addressBar.value;
+    let { rid, cid } = getRIdCIdfromAddress(address);
+    console.log(rid, cid);
+    let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+    cell.style.textDecoration = "underline";
+})
+
+fontfamilybtn.addEventListener("change", function () {
+    let fontStyle = fontfamilybtn.value;
+    let address = addressBar.value;
+    let { rid, cid } = getRIdCIdfromAddress(address);
+    console.log(rid, cid);
+    let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+    console.log(fontStyle);
+    cell.style.fontFamily = fontStyle;
+})
+
 function getRIdCIdfromAddress(adress) {
     // A1
     let cellColAdr = adress.charCodeAt(0);
