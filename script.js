@@ -7,17 +7,14 @@ let leftBtn = document.querySelector(".left");
 let rightBtn = document.querySelector(".right");
 let centerBtn = document.querySelector(".center");
 let fontBtn = document.querySelector(".font-size");
-let boldbtn = document.querySelector(".bold");
-let italicbtn = document.querySelector(".Italic");
-let underlinebtn = document.querySelector(".underline");
-let fontfamilybtn = document.querySelector(".font-family");
-let changecoloroftextbtn = document.querySelector("#color");
-let changecolorofbgbtn = document.querySelector("#bg-color");
-/*https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color*/
-
-
-
+let fontFamily = document.querySelector(".font-family");
+let boldElem = document.querySelector(".bold");
+let italicElem = document.querySelector(".italic");
+let underlineElem = document.querySelector(".underline");
 firstSheet.addEventListener("click", handleActiveSheet)
+
+// create sheets and add functionlities
+
 addbtnContainer.addEventListener("click", function () {
     let sheetsArr = document.querySelectorAll(".sheet");
     let lastSheetElem = sheetsArr[sheetsArr.length - 1];
@@ -41,6 +38,8 @@ function handleActiveSheet(e) {
         MySheet.classList.add("active-sheet");
     }
 }
+// *****************************************************
+//  address set on click of a cell 
 for (let i = 0; i < Allcells.length; i++) {
     Allcells[i].addEventListener("click", function handleCell() {
         let rid = Number(Allcells[i].getAttribute("rid"));
@@ -49,30 +48,34 @@ for (let i = 0; i < Allcells.length; i++) {
         let colAdd = String.fromCharCode(cid + 65);
         let address = colAdd + rowAdd;
         addressBar.value = address;
+        // styling-> set 
     });
 }
+// initial cell click emulate
+Allcells[0].click();
+// ************Formatting****************
+
 leftBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "left";
+    cell.style.textAlign = "left"
 })
 rightBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "right";
+    cell.style.textAlign = "right"
 })
 centerBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "center";
+    cell.style.textAlign = "center"
 })
-
 fontBtn.addEventListener("change", function () {
     let fontSize = fontBtn.value;
     let address = addressBar.value;
@@ -80,43 +83,68 @@ fontBtn.addEventListener("change", function () {
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
     console.log(fontSize);
-    cell.style.fontSize = fontSize+"px";
+    cell.style.fontSize = fontSize + "px";
 })
-
-boldbtn.addEventListener("click",function(){
+fontFamily.addEventListener("change", function () {
+    // alert(fontFamily.value);
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.fontWeight = "bold";
+    let cFont = fontFamily.value
+    cell.style.fontFamily = cFont;
 })
 
-italicbtn.addEventListener("click",function(){
+boldElem.addEventListener("click", function () {
+    let isActive = boldElem.classList.contains("active-btn");
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.fontStyle = "italic";
+    if (isActive == false) {
+        // cell text bold
+        cell.style.fontWeight = "bold";
+        boldElem.classList.add("active-btn");
+    } else {
+        // cell text normal
+        cell.style.fontWeight = "normal";
+        boldElem.classList.remove("active-btn");
+    }
 })
-
-underlinebtn.addEventListener("click",function(){
+italicElem.addEventListener("click", function () {
+    let isActive = italicElem.classList.contains("active-btn");
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textDecoration = "underline";
+    if (isActive == false) {
+        // cell text bold
+        cell.style.fontStyle = "italic";
+        italicElem.classList.add("active-btn");
+    } else {
+        // cell text normal
+        cell.style.fontStyle = "normal";
+        italicElem.classList.remove("active-btn");
+    }
 })
-
-fontfamilybtn.addEventListener("change", function () {
-    let fontStyle = fontfamilybtn.value;
+underlineElem.addEventListener("click", function () {
+    let isActive = underlineElem.classList.contains("active-btn");
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    console.log(fontStyle);
-    cell.style.fontFamily = fontStyle;
+    if (isActive == false) {
+        // cell text bold
+        cell.style.textDecoration = "underline";
+        underlineElem.classList.add("active-btn");
+    } else {
+        // cell text normal
+        cell.style.textDecoration = "none";
+        underlineElem.classList.remove("active-btn");
+    }
 })
+// ****************************************************************
 
+
+
+
+// Helper function
 function getRIdCIdfromAddress(adress) {
     // A1
     let cellColAdr = adress.charCodeAt(0);
@@ -127,4 +155,3 @@ function getRIdCIdfromAddress(adress) {
     return { cid, rid };
 
 }
-Allcells[0].click();
