@@ -1,0 +1,145 @@
+body{
+    margin:0px;
+
+}
+*{
+    box-sizing: border-box;
+    
+
+}
+
+
+/*******************************************/
+
+/*look to menu.css*/
+/*******************************************/
+.formula-container{
+    height:2rem;
+    border: 1px solid rgb(26, 23, 23);
+    display: flex;
+    gap:2rem;
+    justify-content:space-around;
+    align-items:center;
+    background-color: rgb(120, 194, 194);
+    
+
+    
+    
+}
+.formula-container>*{
+  height:70%;
+
+}
+.address{
+  width:10%;
+}
+.formula{
+  width:78%;
+
+}
+/*****************************************/
+
+.sheets-container{
+    height:3rem;
+    display:flex;
+    border: 1px solid rgb(41, 37, 37);
+
+
+}
+.icon-container{
+    height:100%;
+    width:5%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(41, 37, 37);
+
+}
+.icon{
+    font-size: 1.5rem;
+    
+    
+}
+.sheet-list{
+    height:100%;
+    width: 95%;
+    display: flex;
+    overflow-x: auto;
+    
+}
+.sheet-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.sheet-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.sheet{
+    height: 100%;
+    min-width:5rem;
+    border: 1px solid salmon;
+    padding-top:1rem;
+    padding-left:1rem;
+    background-color: lightgrey;
+}
+.active{
+    background-color: white ;
+}
+/*******************************************/
+.grid-container{
+    height: calc( 100vh - ( 3rem + 2rem + 3rem ) );
+    border: 1px solid rgb(41, 37, 37);
+    background-color: rgb(166, 219, 219);
+    overflow: auto;
+    position: relative;
+}
+
+
+.top-left_block{
+   
+    background-color: grey;
+    
+    
+}
+.block{
+    border: 1px solid;
+    width:1.5rem;
+    height:1.5rem;
+    background-color: rgb(125, 189, 189);
+
+}
+.top-row{
+    
+
+    display:flex;
+    position:absolute;
+    top:0px;
+    left:1.5rem;
+    background-color: rgb(118, 179, 179);
+    
+}
+.cell{
+    height:1.5rem;
+    border: 1px solid;
+    min-width:5rem;
+    text-align: center;
+    overflow-x: auto;
+
+}
+
+.row{
+    display:flex;
+    
+}
+.grid{
+    position:absolute;
+    top:24px;
+    left:24px;
+    overflow-x: auto;
+}
+
+
+
+/*******************************************/
